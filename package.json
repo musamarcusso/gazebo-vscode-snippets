@@ -1,0 +1,29 @@
+{
+    "name": "gazebo-snippets",
+    "displayName": "Gazebo snippets",
+    "description": "Snippets for writing SDF and URDF files for the simulation software Gazebo",
+    "version": "0.0.1",
+    "publisher": "musamarcusso",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/musamarcusso/gazebo-snippets.git"
+    },
+    "engines": {
+        "vscode": "^1.21.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "xml",
+                "path": "./snippets/sdf.json"
+            },
+            {
+                "language": "python",
+                "path": "./snippets/urdf.json"
+            }
+        ]
+    }
+}
