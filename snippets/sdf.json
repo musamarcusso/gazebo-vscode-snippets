@@ -147,6 +147,17 @@
 			"\t${0}",
 			"</world>"
 		]
+	},
+
+	"plugin": {
+		"prefix": "sdf.plugin",
+		"scope": "xml",
+		"description": "Empty plugin block",
+		"body": [
+			"<plugin name=\"${1}\" filename=\"${2}\" />",
+			"\t${3}",
+			"</plugin>"
+		]
 	}
 
 }
