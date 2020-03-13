@@ -1,0 +1,44 @@
+{
+    "model": {
+        "prefix": "config.model",
+        "scope": "xml",
+        "description": "Model configuration",
+        "body": [
+            "<model>",
+            "\t<name>${1}</name>",
+            "\t<version>1.0</version>",
+            "\t<sdf version=\"1.6\">model.sdf</sdf>",
+            "\t<author>",
+            "\t\t<name>John Doe</name>",
+            "\t\t<email>john.doe@email.com</email>",
+            "\t</author>",
+            "\t<description>",
+            "\t\tModel description",
+            "\t</description>",
+            "</model>"
+        ]
+    },
+
+    "author": {
+        "prefix": "config.author",
+        "scope": "xml",
+        "description": "Author",
+        "body": [
+            "<author>",
+            "\t<name>${1}</name>",
+            "\t<email>${2}</email>",
+            "</author>"
+        ]
+    },
+
+    "description": {
+        "prefix": "config.description",
+        "scope": "xml",
+        "description": "Model description",
+        "body": [
+            "<description>",
+            "\t${1}",
+            "</description>"
+        ]
+    }
+}

@@ -1,27 +1,10 @@
-{
-	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-	// Placeholders with the same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"scope": "javascript,typescript",
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-    // }
-    
+{    
     "mass": {
         "prefix": "urdf.mass",
         "scope": "xml",
         "description": "Mass in kg",
         "body": [
-            "<mass value=\"${1:value}\"/>"
+            "<mass value=\"${1}\"/>"
         ]
     },
 
@@ -41,5 +24,105 @@
         "body": [
             "<origin xyz=\"0 0 0\" rpy=\"0 0 0\"/>"
         ]
+    },
+
+    "inertial": {
+        "prefix": "urdf.inertial",
+        "scope": "xml",
+        "description": "Inertial block",
+        "body": [
+            "<inertial>",
+            "\t<origin xyz=\"0 0 0\" rpy=\"0 0 0\"/>",
+            "\t<mass value=\"0\"/>",
+            "\t<inertia ixx=\"0\"  ixy=\"0\"  ixz=\"0\" iyy=\"0\" iyz=\"0\" izz=\"0\" />",
+            "</inertial>"
+        ]
+    },
+
+    "color" : {
+        "prefix": "urdf.material.color",
+        "scope": "xml",
+        "description": "Material as a color",
+        "body": [
+            "<material name=\"${1}\">",
+            "\t<color rgba=\"0 0 0 1\"/>",
+            "</material>"
+        ]
+    },
+
+    "texture": {
+        "prefix": "urdf.material.texture",
+        "scope": "xml",
+        "description": "Material as texture",
+        "body": [
+            "<material name=\"${1}\">",
+            "\t<texture filename=\"package://pkg/mesh_filename\"/>",
+            "</material>"
+        ]
+    },
+
+    "cylinder": {
+        "prefix": "urdf.cylinder",
+        "scope": "xml",
+        "description": "Cylinder",
+        "body": [
+            "<cylinder radius=\"${1}\" length=\"${2}\" />"
+        ]
+    },
+
+    "box": {
+        "prefix": "urdf.box",
+        "scope": "xml",
+        "description": "Box",
+        "body": [
+            "<box size=\"${1} ${2} ${3}\" />"
+        ]
+    },
+
+    "sphere": {
+        "prefix": "urdf.sphere",
+        "scope": "xml",
+        "description": "Sphere",
+        "body": [
+            "<sphere radius=\"${1}\" />"
+        ]
+    },
+
+    "mesh": {
+        "prefix": "urdf.mesh",
+        "scope": "xml",
+        "description": "Mesh",
+        "body": [
+            "<mesh filename\"${1}\" scale=\"1 1 1\" />"
+        ]
+    },
+
+    "collision": {
+        "prefix": "urdf.collision",
+        "scope": "xml",
+        "description": "Collision block",
+        "body": [
+            "<collision name=\"${1}\">",
+            "\t<origin xyz=\"0 0 0\" rpy=\"0 0 0\"/>",
+            "\t<geometry>",
+            "\t\t${2}",
+            "\t</geometry>",
+            "</collision>"
+        ]
+    },
+
+    "visual": {
+        "prefix": "urdf.visual",
+        "scope": "xml",
+        "description": "Visual block",
+        "body": [
+            "<visual name=\"${1}\">",
+            "\t<origin xyz=\"0 0 0\" rpy=\"0 0 0\"/>",
+            "\t<geometry>",
+            "\t\t${2}",
+            "\t</geometry>",
+            "</visual>"
+        ]
     }
+
 }

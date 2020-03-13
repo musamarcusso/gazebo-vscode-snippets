@@ -21,8 +21,12 @@
                 "path": "./snippets/sdf.json"
             },
             {
-                "language": "python",
+                "language": "xml",
                 "path": "./snippets/urdf.json"
+            },
+            {
+                "language": "xml",
+                "path": "./snippets/config.json"
             }
         ]
     }
