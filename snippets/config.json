@@ -19,6 +19,24 @@
         ]
     },
 
+    "name": {
+        "prefix": "config.name",
+        "scope": "xml",
+        "description": "Model name",
+        "body": [
+            "<name>${1}</name>"
+        ]
+    },
+
+    "version": {
+        "prefix": "config.version",
+        "scope": "xml",
+        "description": "Model version",
+        "body": [
+            "<version>${1}</version>"
+        ]
+    },
+
     "author": {
         "prefix": "config.author",
         "scope": "xml",
@@ -39,6 +57,15 @@
             "<description>",
             "\t${1}",
             "</description>"
+        ]
+    },
+
+    "sdf_version": {
+        "prefix": "config.sdf_version",
+        "scope": "xml",
+        "description": "SDF version",
+        "body": [
+            "<sdf version=\"${1}\">model.sdf</sdf>"
         ]
     }
 }
