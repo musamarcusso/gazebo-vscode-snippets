@@ -2,7 +2,7 @@
     "p3d": {
         "prefix": "gazebo.ros2.p3d",
         "scope": "xml",
-        "description": "P3D ROS 2 plugin",
+        "description": "[ROS 2] Gazebo P3D plugin",
         "body": [
             "<plugin name=\"gazebo_ros_p3d\" filename=\"libgazebo_ros_p3d.so\">",
             "",
@@ -21,5 +21,283 @@
             "",
             "</plugin>"
         ]
-    }   
+    },
+
+    "bumper": {
+        "prefix": "gazebo.ros2.bumper",
+        "scope": "xml",
+        "description": "[ROS 2] Gazebo bumper plugin",
+        "body": [
+            "<plugin name=\"bumper_plugin\" filename=\"libgazebo_ros_bumper.so\">",
+            "\t<ros>",
+            "\t\t<namespace>demo</namespace>",
+            "\t\t<argument>bumper_states:=bumper_demo</argument>",
+            "\t</ros>",
+            "\t<frame_name>world</frame_name>",
+            "</plugin>"
+        ]
+    },
+
+    "camera": {
+        "prefix": "gazebo.ros2.camera.default",
+        "scope": "xml",
+        "description": "[ROS 2] Gazebo camera",
+        "body": [
+            "<plugin name=\"plugin_name\" filename=\"libgazebo_ros_camera.so\">",
+            "\t<!-- Change namespace, camera name and topics so:",
+            "\t\t\t* Images are published to: /custom_ns/custom_camera/custom_image",
+            "\t\t\t* Camera info is published to: /custom_ns/custom_camera/custom_info",
+            "\t-->",
+            "\t<ros>",
+            "\t\t<namespace>custom_ns</namespace>",
+            "\t\t<argument>image_raw:=custom_img</argument>",
+            "\t\t<argument>camera_info:=custom_info</argument>",
+            "\t</ros>",
+            "",
+            "\t<!-- Set camera name. If empty, defaults to sensor name (i.e. \"sensor_name\") -->",
+            "\t<camera_name>custom_camera</camera_name>",
+            "",
+            "\t<!-- Set TF frame name. If empty, defaults to link name (i.e. \"link_name\") -->",
+            "\t<frame_name>custom_frame</frame_name>",
+            "",
+            "\t<hack_baseline>0.07</hack_baseline>",
+            "",
+            "\t<!-- No need to repeat distortion parameters or to set autoDistortion -->",
+            "</plugin>"
+        ]
+    }, 
+
+    "triggered_camera": {
+        "prefix": "gazebo.ros2.camera.triggered",
+        "scope": "xml",
+        "description": "[ROS 2] Gazebo triggered camera",
+        "body": [
+            "<plugin name=\"plugin_name\" filename=\"libgazebo_ros_camera.so\">",
+            "\t<!-- Change namespace, camera name and topics so:",
+            "\t\t* Images are published to: /custom_ns/custom_camera/custom_image",
+            "\t\t* Camera info is published to: /custom_ns/custom_camera/custom_info",
+            "\t\t* Trigger is received on: /custom_ns/custom_camera/custom_trigger",
+            "\t-->",
+            "\t<ros>",
+            "\t\t<namespace>custom_ns</namespace>",
+            "\t\t<argument>image_raw:=custom_img</argument>",
+            "\t\t<argument>camera_info:=custom_info</argument>",
+            "\t\t<argument>image_trigger:=custom_trigger</argument>",
+            "\t</ros>",
+            "",
+            "\t<!-- Set camera name. If empty, defaults to sensor name (i.e. \"sensor_name\") -->",
+            "\t<camera_name>custom_camera</camera_name>",
+            "",
+            "\t<!-- Set TF frame name. If empty, defaults to link name (i.e. \"link_name\") -->",
+            "\t<frame_name>custom_frame</frame_name>",
+            "",
+            "\t<!-- Set to true to turn on triggering -->",
+            "\t<triggered>true</triggered>",
+            "",
+            "\t<hack_baseline>0.07</hack_baseline>",
+            "",
+            "\t<!-- No need to repeat distortion parameters or to set autoDistortion -->",
+            "</plugin>"
+        ]
+    },
+
+    "multicamera": {
+        "prefix": "gazebo.ros2.camera.multicamera",
+        "scope": "xml",
+        "description": "[ROS 2] Gazebo multicamera",
+        "body": [
+            "<plugin name=\"plugin_name\" filename=\"libgazebo_ros_camera.so\">",
+            "\t<!-- Change namespace, camera name and topics so:",
+            "\t\t* Left images are published to: /custom_ns/custom_camera/left/custom_image",
+            "\t\t* Right images are published to: /custom_ns/custom_camera/right/custom_image",
+            "\t\t* Left camera info is published to: /custom_ns/custom_camera/left/custom_camera_info",
+            "\t\t* Right camera info is published to: /custom_ns/custom_camera/right/custom_camera_info",
+            "\t-->",
+            "\t<ros>",
+            "\t\t<namespace>custom_ns</namespace>",
+            "\t\t<!-- topics need to be prefixed with camera_name for remapping -->",
+            "\t\t<argument>custom_camera/left/image_raw:=custom_camera/left/custom_image</argument>",
+            "\t\t<argument>custom_camera/right/image_raw:=custom_camera/right/custom_image</argument>",
+            "\t\t<argument>custom_camera/left/camera_info:=custom_camera/left/custom_camera_info</argument>",
+            "\t\t<argument>custom_camera/right/camera_info:=custom_camera/right/custom_camera_info</argument>",
+            "\t</ros>",
+            "",
+            "\t<camera_name>custom_camera</camera_name>",
+            "",
+            "\t<frame_name>left_camera_optical_frame</frameName>",
+            "</plugin>"
+        ]
+    },
+
+    "triggered_multicamera": {
+        "prefix": "gazebo.ros2.camera.triggered_multicamera",
+        "scope": "xml",
+        "description": "[ROS 2] Gazebo triggered multicamera",
+        "body": [
+            "<plugin name=\"plugin_name\" filename=\"libgazebo_ros_camera.so\">",
+            "\t<!-- Change namespace, camera name and topics so:",
+            "\t\t* Raw images are published to: /custom_ns/custom_camera/custom_image",
+            "\t\t* Depth images are published to: /custom_ns/custom_camera/custom_image_depth",
+            "\t\t* Raw image camera info is published to: /custom_ns/custom_camera/custom_info_raw",
+            "\t\t* Depth image camera info is published to: /custom_ns/custom_camera/custom_info_depth",
+            "\t\t* Point cloud is published to: /custom_ns/custom_camera/custom_points",
+            "\t-->",
+            "\t<ros>",
+            "\t\t<namespace>custom_ns</namespace>",
+            "\t\t<argument>custom_camera/image_raw:=custom_camera/custom_image</argument>",
+            "\t\t<argument>custom_camera/image_depth:=custom_camera/custom_image_depth</argument>",
+            "\t\t<argument>custom_camera/camera_info:=custom_camera/custom_info_raw</argument>",
+            "\t\t<argument>custom_camera/camera_info_depth:=custom_camera/custom_info_depth</argument>",
+            "\t\t<argument>custom_camera/points:=custom_camera/custom_points</argument>",
+            "\t</ros>",
+            "",
+            "\t<!-- Set camera name. If empty, defaults to sensor name (i.e. \"sensor_name\") -->",
+            "\t<camera_name>custom_camera</camera_name>",
+            "",
+            "\t<!-- Set TF frame name. If empty, defaults to link name (i.e. \"link_name\") -->",
+            "\t<frame_name>custom_frame</frame_name>",
+            "",
+            "\t<hack_baseline>0.07</hack_baseline>",
+            "",
+            "\t<!-- No need to repeat distortion parameters or to set autoDistortion -->",
+            "",
+            "\t<min_depth>0.001</min_depth>",
+            "</plugin>"
+        ]
+    },
+
+    "rgbd_camera": {
+        "prefix": "gazebo.ros2.camera.rgbd",
+        "scope": "xml",
+        "description": "[ROS 2] Gazebo RGBD camera",
+        "body": [
+            "<plugin name=\"plugin_name\" filename=\"libgazebo_ros_camera.so\">",
+            "\t<!-- Change namespace, camera name and topics so:",
+            "\t\t* Raw images are published to: /custom_ns/custom_camera/custom_image",
+            "\t\t* Depth images are published to: /custom_ns/custom_camera/custom_image_depth",
+            "\t\t* Raw image camera info is published to: /custom_ns/custom_camera/custom_info_raw",
+            "\t\t* Depth image camera info is published to: /custom_ns/custom_camera/custom_info_depth",
+            "\t\t* Point cloud is published to: /custom_ns/custom_camera/custom_points ",
+            "\t-->",
+            "\t<ros>",
+            "\t\t<namespace>custom_ns</namespace>",
+            "\t\t<argument>custom_camera/image_raw:=custom_camera/custom_image</argument>",
+            "\t\t<argument>custom_camera/image_depth:=custom_camera/custom_image_depth</argument>",
+            "\t\t<argument>custom_camera/camera_info:=custom_camera/custom_info_raw</argument>",
+            "\t\t<argument>custom_camera/camera_info_depth:=custom_camera/custom_info_depth</argument>",
+            "\t\t<argument>custom_camera/points:=custom_camera/custom_points</argument>",
+            "\t</ros>",
+            "",
+            "\t<!-- Set camera name. If empty, defaults to sensor name (i.e. \"sensor_name\") -->",
+            "\t<camera_name>custom_camera</camera_name>",
+            "",
+            "\t<!-- Set TF frame name. If empty, defaults to link name (i.e. \"link_name\") -->",
+            "\t<frame_name>custom_frame</frame_name>",
+            "",
+            "\t<hack_baseline>0.07</hack_baseline>",
+            "",
+            "\t<!-- No need to repeat distortion parameters or to set autoDistortion -->",
+            "",
+            "\t<min_depth>0.001</min_depth>",
+            "\t<max_depth>300.0</max_depth>",
+            "</plugin>"
+        ]
+    },
+
+    "diff_drive": {
+        "prefix": "gazebo.ros2.diff_drive",
+        "scope": "xml",
+        "description":"[ROS 2] Gazebo diff-drive plugin",
+        "body": [
+            "<plugin name=\"diff_drive\" filename=\"libgazebo_ros_diff_drive.so\">",
+            "\t<ros>",
+            "\t\t<!-- Set namespace -->",
+            "\t\t<namespace>/demo</namespace>",
+            "",
+            "\t\t<!-- Remap default topics -->",
+            "\t\t<argument>cmd_vel:=cmd_demo</argument>",
+            "\t\t<argument>odom:=odom_demo</argument>",
+            "\t</ros>",
+            "",
+            "\t<!-- Replace camelCase elements with camel_case ones -->",
+            "\t<update_rate>500</update_rate>",
+            "\t<left_joint>left_wheel_joint</left_joint>",
+            "\t<right_joint>right_wheel_joint</right_joint>",
+            "\t<wheel_separation>1.25</wheel_separation>",
+            "\t<wheel_diameter>0.3</wheel_diameter>",
+            "\t<odometry_frame>odom</odometry_frame>",
+            "",
+            "\t<max_wheel_torque>20</max_wheel_torque>",
+            "\t<max_acceleration>1.0</max_acceleration>",
+            "",
+            "</plugin>"
+        ]
+    },
+
+    "elevator": {
+        "prefix": "gazebo.ros2.elevator",
+        "scope": "xml",
+        "description":"[ROS 2] Gazebo elevator plugin",
+        "body": [
+            "<plugin name=\"elevator\" filename=\"libgazebo_ros_elevator.so\">",
+            "\t<ros>",
+            "\t\t<namespace>demo</namespace>",
+            "\t\t<argument>elevator:=elevator_demo</argument>",
+            "\t</ros>",
+            "\t<!-- Floor constraints -->",
+            "\t<bottom_floor>0</bottom_floor>",
+            "\t<top_floor>1</top_floor>",
+            "",
+            "\t<lift_joint>elevator::lift</lift_joint>",
+            "\t<door_joint>elevator::door</door_joint>",
+            "\t<floor_height>3.075</floor_height>",
+            "",
+            "\t<!-- Time the elevator door will stay open in seconds -->",
+            "\t<door_wait_time>10</door_wait_time>",
+            "</plugin>"
+        ]
+    },
+
+    "ft_sensor": {
+        "prefix": "gazebo.ros2.ft_sensor",
+        "scope": "xml",
+        "description":"[ROS 2] Gazebo FT sensor plugin",
+        "body": [
+            "<plugin name=\"gazebo_ros_f3d\" filename=\"libgazebo_ros_ft_sensor.so\">",
+            "",
+            "\t<ros>",
+            "\t<!-- Add namespace and remap the default topic -->",
+            "\t\t<namespace>/demo</namespace>",
+            "\t\t<argument>wrench:=f3d_demo</argument>",
+            "\t</ros>",
+            "",
+            "\t<!-- Set update rate-->",
+            "\t<update_rate>200</update_rate>",
+            "",
+            "\t<body_name>box_link</body_name>",
+            "\t<frame_name>sphere_link</frame_name>",
+            "\t<update_rate>1</update_rate>",
+            "",
+            "\t<!-- Add Gaussian noise -->",
+            "\t<gaussian_noise>0.01</gaussian_noise>",
+            "</plugin>"
+        ]
+    },
+
+    "hand_of_god": {
+        "prefix": "gazebo.ros2.hand_of_god",
+        "scope": "xml",
+        "description":"[ROS 2] Gazebo hand of god plugin",
+        "body": [
+            "<plugin name=\"hand_of_god\" filename=\"libgazebo_ros_hand_of_god.so\">",
+            "\t<ros>",
+            "\t\t<namespace>/demo</namespace>",
+            "\t</ros>",
+            "\t<link_name>link</link_name>",
+            "\t<frame_id>link</frame_id>",
+            "\t<ka>200</ka>",
+            "\t<kl>200</kl>",
+            "</plugin>"
+        ]
+    }
 }
