@@ -299,5 +299,20 @@
             "\t<kl>200</kl>",
             "</plugin>"
         ]
+    },
+
+    "imu": {
+        "prefix": "gazebo.ros2.imu",
+        "scope": "xml",
+        "description":"[ROS 2] Gazebo IMU plugin",
+        "body": [
+            "<plugin name=\"imu_plugin\" filename=\"libgazebo_ros_imu_sensor.so\">",
+            "\t<ros>",
+            "\t\t<!-- Will publish to /imu/data -->",
+            "\t\t<namespace>/imu</namespace>",
+            "\t\t<argument>~/out:=data</argument>",
+            "\t</ros>",
+            "</plugin>"
+        ]
     }
 }
