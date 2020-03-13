@@ -1,0 +1,25 @@
+{
+    "p3d": {
+        "prefix": "gazebo.ros2.p3d",
+        "scope": "xml",
+        "description": "P3D ROS 2 plugin",
+        "body": [
+            "<plugin name=\"gazebo_ros_p3d\" filename=\"libgazebo_ros_p3d.so\">",
+            "",
+            "\t<ros>",
+            "\t\t<!-- Add namespace and remap the default topic -->",
+            "\t\t<namespace>/demo</namespace>",
+            "\t\t<argument>odom:=p3d_demo</argument>",
+            "\t</ros>",
+            "",
+            "\t<body_name>link</body_name>",
+            "\t<frame_name>/world</frame_name>",
+            "\t<update_rate>1</update_rate>",
+            "\t<xyz_offsets>0 0 0</xyz_offsets>",
+            "\t<rpy_offsets>0 0 0</rpy_offsets>",
+            "\t<gaussian_noise>0</gaussian_noise>",
+            "",
+            "</plugin>"
+        ]
+    }   
+}

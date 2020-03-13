@@ -27,6 +27,14 @@
             {
                 "language": "xml",
                 "path": "./snippets/config.json"
+            },
+            {
+                "language": "xml",
+                "path": "./snippets/ros2_plugins.json"
+            },
+            {
+                "language": "xml",
+                "path": "./snippets/ros1_plugins.json"
             }
         ]
     }
