@@ -136,6 +136,17 @@
 			"\t<pose relative_to=\"frame_name\">0 0 0 0 0 0</pose>",
 			"</include>"
 		]
+	},
+
+	"world": {
+		"prefix": "sdf.world",
+		"scope": "xml",
+		"description": "World block",
+		"body": [
+			"<world name=\"${1}\">",
+			"\t${0}",
+			"</world>"
+		]
 	}
 
 }
